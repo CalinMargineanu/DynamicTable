@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DynamicTable</title>
+
+    <style>
+        table, td {
+            border: 1px solid cornflowerblue;
+        }
+    </style>
+</head>
+<body>
+
+<table id="tabel">
+
+</table>
+
+<script>
+
+    function creare_obiect(brand, model, culoare, marime, material) {
+        this.brand = brand
+        this.model = model
+        this.culoare = culoare
+        this.marime = marime
+        this.material = material
+    }
+
+    let adidas = {
+        brand: 'adidas',
+        model: 'sport',
+        culoare: 'rosu',
+        marime: '42',
+        material: 'textil'
+    }
+
+    let nike = new creare_obiect("nike", "sport", "albastru", "43", "textil")
+    let puma = new creare_obiect("puma", "casual", "negru", "40", "piele")
+    let reebook = new creare_obiect("reebook", "sport", "alb", "44", "textil")
+    let premiate = new creare_obiect("premiate", "casual", "maro", "42", "piele")
+
+    let produs = []
+
+    produs.push(adidas)
+    produs.push(nike)
+    produs.push(puma)
+    produs.push(reebook)
+    produs.push(premiate)
+
+/*    // functia creaza un rand de tabel
+    function creare_tabel(valoare) {
+        let tabel = document.getElementById("tabel")
+        let element = [0, 1, 2, 3, 4]
+        for (let i = 0; i < element.length; i++)
+            if (element[i] === valoare) {
+                let rand = tabel.insertRow(0)
+                rand.insertCell(0).innerHTML = produs[i].brand
+                rand.insertCell(1).innerHTML = produs[i].model
+                rand.insertCell(2).innerHTML = produs[i].culoare
+                rand.insertCell(3).innerHTML = produs[i].marime
+                rand.insertCell(4).innerHTML = produs[i].material
+            }
+    }
+
+    function selecteaza_incaltaminte() {
+        switch (model) {
+            case "adidas":
+                creare_tabel(0)
+                alert("Brand-ul introdus este Adidas")
+                break
+            case "nike":
+                creare_tabel(1)
+                alert("Brand-ul introdus este Nike")
+                break
+            case "puma":
+                creare_tabel(2)
+                alert("Brand-ul introdus este Puma")
+                break
+            case "reebook":
+                creare_tabel(3)
+                alert("Brand-ul introdus este Reebook")
+                break
+            case "premiate":
+                creare_tabel(4)
+                alert("Brand-ul introdus este Premiate")
+                break
+            default: alert("Nu a fost introdus niciun brand")
+        }
+    }
+
+    let model = prompt("Introduceti brand-ul incaltamintei: adidas, nike, puma, reebook, premiate.", "")
+    selecteaza_incaltaminte(model)*/
+
+    // functia afiseaza unul sau mai multe randuri din tabel
+    function creare_tabel(element) {
+        let tabel = document.getElementById("tabel")
+        let i = 0
+        while (i < element) {
+            let rand = tabel.insertRow(i)
+            rand.insertCell(0).innerHTML = produs[i].brand
+            rand.insertCell(1).innerHTML = produs[i].model
+            rand.insertCell(2).innerHTML = produs[i].culoare
+            rand.insertCell(3).innerHTML = produs[i].marime
+            rand.insertCell(4).innerHTML = produs[i].material
+            i = i + 1
+        }
+    }
+
+    let element = []
+
+    function selecteaza_numar_produse() {
+        switch (model) {
+            case "1":
+                creare_tabel(1)
+                alert("Se va afisa un produs")
+                break
+            case "2":
+                creare_tabel(2)
+                alert("Se vor afisa doua produse")
+                break
+            case "3":
+                creare_tabel(3)
+                alert("Se vor afisa trei produse")
+                break
+            case "4":
+                creare_tabel(4)
+                alert("Se vor afisa patru produse")
+                break
+            case "5":
+                creare_tabel(5)
+                alert("Se vor afisa cinci produse")
+                break
+            default:
+                alert("Valoarea introdusa nu este corecta!")
+        }
+    }
+
+    let model = prompt("Cate produse doriti sa afisati? Ex. 1, 2, 3, 4, 5 produse", "")
+    selecteaza_numar_produse(model)
+
+    function creare_header() {
+        let tabel = document.getElementById("tabel")
+        let header = tabel.createTHead()
+        let rand = header.insertRow()
+        rand.insertCell(0).innerHTML = "<b>Brand</b>"
+        rand.insertCell(1).innerHTML = "<b>Model</b>"
+        rand.insertCell(2).innerHTML = "<b>Culoare</b>"
+        rand.insertCell(3).innerHTML = "<b>Marime</b>"
+        rand.insertCell(4).innerHTML = "<b>Material</b>"
+    }
+
+    creare_header()
+
+
+/*    //Creare elemente
+    let rand = document.createElement("tr")
+    document.body.appendChild(rand)
+    document.getElementById("tabel").appendChild(rand)
+
+    let new_td_0 = document.createElement("td")
+    let new_td_1 = document.createElement("td")
+    let new_td_2 = document.createElement("td")
+    let new_td_3 = document.createElement("td")
+    let new_td_4 = document.createElement("td")
+
+    let text_td_0 = document.createTextNode(produs[0].brand)
+    let text_td_1 = document.createTextNode(produs[0].model)
+    let text_td_2 = document.createTextNode(produs[0].culoare)
+    let text_td_3 = document.createTextNode(produs[0].marime)
+    let text_td_4 = document.createTextNode(produs[0].material)
+
+    new_td_0.appendChild(text_td_0)
+    new_td_1.appendChild(text_td_1)
+    new_td_2.appendChild(text_td_2)
+    new_td_3.appendChild(text_td_3)
+    new_td_4.appendChild(text_td_4)
+
+    let element_td_0 = document.getElementById("randul_1")
+    element_td_0.appendChild(new_td_0)
+
+    let element_td_1 = document.getElementById("randul_1")
+    element_td_1.appendChild(new_td_1)
+
+    let element_td_2 = document.getElementById("randul_1")
+    element_td_2.appendChild(new_td_2)
+
+    let element_td_3 = document.getElementById("randul_1")
+    element_td_3.appendChild(new_td_3)
+
+    let element_td_4 = document.getElementById("randul_1")
+    element_td_4.appendChild(new_td_4)*/
+
+
+
+</script>
+
+</body>
+</html>
