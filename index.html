@@ -54,7 +54,7 @@
     produse.push(premiate)
 
 
-   /* // functia creaza un rand de tabel
+/*    // functia creaza un rand de tabel
     function creare_rand_de_tabel(nume_brand) {
         let tabel = document.getElementById("tabel")
         let brand = ["adidas", "nike", "puma", "reebook", "premiate"]
@@ -101,7 +101,7 @@
     afiseaza_brand(brand)*/
 
 
-   /* // functia afiseaza unul sau mai multe randuri de tabel
+/*    // functia afiseaza unul sau mai multe randuri de tabel
     function creare_randuri_de_tabel(numar_randuri) {
         let tabel = document.getElementById("tabel")
         let i = 0
@@ -149,7 +149,7 @@
     afiseaza_numarul_de_produse(numar_produse)*/
 
 
-    // functia creeaza un tabel in modul ascuns
+ /*   // functia creeaza un tabel in modul ascuns
     function creare_tabel() {
         let tabel = document.getElementById("tabel")
         for (let i = 0; i < 5; i++) {
@@ -208,10 +208,42 @@
     }
 
     let categorii = prompt("Ce categorie din tabel, doriti sa fie afisata? Exemplu: brand, model, culoare, marime, material, logo.", "")
-    afisare_categorie(categorii)
+    afisare_categorie(categorii)*/
+
+    let input = document.createElement("INPUT")
+    let buton = document.createElement("INPUT")
+    input.setAttribute("type", "text")
+    input.setAttribute("id", "input")
+    buton.setAttribute("type", "button")
+    buton.setAttribute("id", "buton")
+    buton.setAttribute("value", "Confirma")
+
+    document.body.appendChild(input)
+    document.body.appendChild(buton)
+
+    input.style.marginLeft = '45%'
+    input.style.marginTop = '5%'
+    buton.style.margin = '1%'
+
+    document.getElementById("buton").addEventListener("click", memorare_nume)
+    document.getElementById("input").addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault()
+            document.getElementById("buton").click()
+        }
+    })
+
+    let nume_memorat = []
+
+    function memorare_nume() {
+        let nume = document.getElementById("input").value
+        nume_memorat.push(nume)
+    }
+
+    console.log(nume_memorat)
 
 
-    function creare_header(column) {
+    function creare_header(header_nou) {
         let tabel = document.getElementById("tabel")
         let header = tabel.createTHead()
         let rand = header.insertRow()
@@ -221,48 +253,69 @@
         rand.insertCell(3).innerHTML = "<b>Marime</b>"
         rand.insertCell(4).innerHTML = "<b>Material</b>"
         rand.insertCell(5).innerHTML = "<b>Logo Text</b>"
+        if (header_nou === true) {
+            rand.insertCell(6 ).innerHTML = "<b>Header nou</b>"
+        }
     }
 
-    creare_header()
+
+    //creare_header(header)
+
+    function creare_header_nou(header_nou) {
+        switch (header_nou) {
+            case "da":
+                creare_header(true)
+                alert('Se va crea o noua coloana.')
+                break
+            case "nu":
+                creare_header(false)
+                break
+            default:
+                alert("Valoarea introdusa nu este corecta!")
+        }
+    }
+
+    let header = prompt('Daca doriti sa creati un nou header, tastati "da".', "")
+    creare_header_nou(header)
 
 
-/*    //Creare elemente
-    let rand = document.createElement("tr")
-    document.body.appendChild(rand)
-    document.getElementById("tabel").appendChild(rand)
+    /*    //Creare elemente
+        let rand = document.createElement("tr")
+        document.body.appendChild(rand)
+        document.getElementById("tabel").appendChild(rand)
 
-    let new_td_0 = document.createElement("td")
-    let new_td_1 = document.createElement("td")
-    let new_td_2 = document.createElement("td")
-    let new_td_3 = document.createElement("td")
-    let new_td_4 = document.createElement("td")
+        let new_td_0 = document.createElement("td")
+        let new_td_1 = document.createElement("td")
+        let new_td_2 = document.createElement("td")
+        let new_td_3 = document.createElement("td")
+        let new_td_4 = document.createElement("td")
 
-    let text_td_0 = document.createTextNode(produs[0].brand)
-    let text_td_1 = document.createTextNode(produs[0].model)
-    let text_td_2 = document.createTextNode(produs[0].culoare)
-    let text_td_3 = document.createTextNode(produs[0].marime)
-    let text_td_4 = document.createTextNode(produs[0].material)
+        let text_td_0 = document.createTextNode(produs[0].brand)
+        let text_td_1 = document.createTextNode(produs[0].model)
+        let text_td_2 = document.createTextNode(produs[0].culoare)
+        let text_td_3 = document.createTextNode(produs[0].marime)
+        let text_td_4 = document.createTextNode(produs[0].material)
 
-    new_td_0.appendChild(text_td_0)
-    new_td_1.appendChild(text_td_1)
-    new_td_2.appendChild(text_td_2)
-    new_td_3.appendChild(text_td_3)
-    new_td_4.appendChild(text_td_4)
+        new_td_0.appendChild(text_td_0)
+        new_td_1.appendChild(text_td_1)
+        new_td_2.appendChild(text_td_2)
+        new_td_3.appendChild(text_td_3)
+        new_td_4.appendChild(text_td_4)
 
-    let element_td_0 = document.getElementById("randul_1")
-    element_td_0.appendChild(new_td_0)
+        let element_td_0 = document.getElementById("randul_1")
+        element_td_0.appendChild(new_td_0)
 
-    let element_td_1 = document.getElementById("randul_1")
-    element_td_1.appendChild(new_td_1)
+        let element_td_1 = document.getElementById("randul_1")
+        element_td_1.appendChild(new_td_1)
 
-    let element_td_2 = document.getElementById("randul_1")
-    element_td_2.appendChild(new_td_2)
+        let element_td_2 = document.getElementById("randul_1")
+        element_td_2.appendChild(new_td_2)
 
-    let element_td_3 = document.getElementById("randul_1")
-    element_td_3.appendChild(new_td_3)
+        let element_td_3 = document.getElementById("randul_1")
+        element_td_3.appendChild(new_td_3)
 
-    let element_td_4 = document.getElementById("randul_1")
-    element_td_4.appendChild(new_td_4)*/
+        let element_td_4 = document.getElementById("randul_1")
+        element_td_4.appendChild(new_td_4)*/
 
 
 
