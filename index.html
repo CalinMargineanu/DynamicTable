@@ -53,52 +53,61 @@
     produse.push(reebook)
     produse.push(premiate)
 
-
-/*    // functia creaza un rand de tabel
-    function creare_rand_de_tabel(nume_brand) {
-        let tabel = document.getElementById("tabel")
-        let brand = ["adidas", "nike", "puma", "reebook", "premiate"]
-        for (let i = 0; i < brand.length; i++)
-            if (brand[i] === nume_brand) {
-                let rand = tabel.insertRow(0)
-                rand.insertCell(0).innerHTML = produse[i].brand
-                rand.insertCell(1).innerHTML = produse[i].model
-                rand.insertCell(2).innerHTML = produse[i].culoare
-                rand.insertCell(3).innerHTML = produse[i].marime
-                rand.insertCell(4).innerHTML = produse[i].material
-                rand.insertCell(5).innerHTML = produse[i].logo_text
-            }
-    }
+// Functii principale: - functia creaza un rand de tabel
+//                     - functia afiseaza unul sau mai multe randuri de tabel
+//                     - functia permite afisarea unei coloane sau a mai multor coloane din tabel care sunt in modul ascuns
+//                     - functia creaza header-ul tabelului si un nou header la alegerea utilizatorului.
+//                     - functia modifica numele initial a noului header
+//                     - functia adauga o valoare in fiecare celula a noii categorii
 
 
-    function afiseaza_brand(nume_brand) {
-        switch (nume_brand) {
-            case "adidas":
-                creare_rand_de_tabel("adidas")
-                alert('Brand-ul introdus este "Adidas"')
-                break
-            case "nike":
-                creare_rand_de_tabel("nike")
-                alert('Brand-ul introdus este "Nike"')
-                break
-            case "puma":
-                creare_rand_de_tabel("puma")
-                alert('Brand-ul introdus este "Puma"')
-                break
-            case "reebook":
-                creare_rand_de_tabel("reebook")
-                alert('Brand-ul introdus este "Reebook"')
-                break
-            case "premiate":
-                creare_rand_de_tabel("premiate")
-                alert('Brand-ul introdus este "Premiate"')
-                break
-            default: alert("Nu a fost introdus niciun brand")
+
+    /*    // functia creaza un rand de tabel
+        function creare_rand_de_tabel(nume_brand) {
+            let tabel = document.getElementById("tabel")
+            let brand = ["adidas", "nike", "puma", "reebook", "premiate"]
+            for (let i = 0; i < brand.length; i++)
+                if (brand[i] === nume_brand) {
+                    let rand = tabel.insertRow(0)
+                    rand.insertCell(0).innerHTML = produse[i].brand
+                    rand.insertCell(1).innerHTML = produse[i].model
+                    rand.insertCell(2).innerHTML = produse[i].culoare
+                    rand.insertCell(3).innerHTML = produse[i].marime
+                    rand.insertCell(4).innerHTML = produse[i].material
+                    rand.insertCell(5).innerHTML = produse[i].logo_text
+                }
         }
-    }
 
-    let brand = prompt("Introduceti brand-ul incaltamintei: adidas, nike, puma, reebook, premiate.", "")
-    afiseaza_brand(brand)*/
+
+        function afiseaza_brand(nume_brand) {
+            switch (nume_brand) {
+                case "adidas":
+                    creare_rand_de_tabel("adidas")
+                    alert('Brand-ul introdus este "Adidas"')
+                    break
+                case "nike":
+                    creare_rand_de_tabel("nike")
+                    alert('Brand-ul introdus este "Nike"')
+                    break
+                case "puma":
+                    creare_rand_de_tabel("puma")
+                    alert('Brand-ul introdus este "Puma"')
+                    break
+                case "reebook":
+                    creare_rand_de_tabel("reebook")
+                    alert('Brand-ul introdus este "Reebook"')
+                    break
+                case "premiate":
+                    creare_rand_de_tabel("premiate")
+                    alert('Brand-ul introdus este "Premiate"')
+                    break
+                default: alert("Nu a fost introdus niciun brand")
+            }
+        }
+
+        let brand = prompt("Introduceti brand-ul incaltamintei: adidas, nike, puma, reebook, premiate.", "")
+        afiseaza_brand(brand)
+        creare_header()*/
 
 
 /*    // functia afiseaza unul sau mai multe randuri de tabel
@@ -146,10 +155,11 @@
     }
 
     let numar_produse = prompt("Cate produse doriti sa afisati? Ex. 1, 2, 3, 4, 5 produse", "")
-    afiseaza_numarul_de_produse(numar_produse)*/
+    afiseaza_numarul_de_produse(numar_produse)
+    creare_header()*/
 
 
- /*   // functia creeaza un tabel in modul ascuns
+/*    // functia creeaza un tabel in modul ascuns
     function creare_tabel() {
         let tabel = document.getElementById("tabel")
         for (let i = 0; i < 5; i++) {
@@ -165,159 +175,170 @@
     }
 
    creare_tabel()
+   creare_header()
 
 
-    // functia permite afisarea unei coloane din tabel care este in modul ascuns
-    function afisare_coloana (column) {
-        let tabel = document.getElementById("tabel")
-        for (let i = 0; i < tabel.rows.length; i++) {
-            tabel.rows[i].cells[column].style.visibility = "visible"
-        }
-    }
+    let buton_adauga = document.createElement("INPUT")
+    let input_nume_header = document.createElement("INPUT")
 
+    input_nume_header.setAttribute("type", "text")
+    input_nume_header.setAttribute("id", "input_n_h")
+    input_nume_header.setAttribute("placeholder", "Ce categorie doriti sa afisati?")
+    input_nume_header.setAttribute("autocomplete", "off")
 
-    function afisare_categorie(categorie) {
-        switch (categorie) {
-            case "brand":
-                afisare_coloana(0)
-                alert('Se va afisa categoria "Brand".')
-                break
-            case "model":
-                afisare_coloana(1)
-                alert('Se va afisa categoria "Model".')
-                break
-            case "culoare":
-                afisare_coloana(2)
-                alert('Se va afisa categoria "Culoare".')
-                break
-            case "marime":
-                afisare_coloana(3)
-                alert('Se va afisa categoria "Marime".')
-                break
-            case "material":
-                afisare_coloana(4)
-                alert('Se va afisa categoria "Material".')
-                break
-            case "logo":
-                afisare_coloana(5)
-                alert('Se va afisa categoria "Logo Text".')
-                break
-            default:
-                alert("Valoarea introdusa nu este corecta!")
-        }
-    }
+    buton_adauga.setAttribute("type", "button")
+    buton_adauga.setAttribute("id", "buton_adauga")
+    buton_adauga.setAttribute("value", "Afisati")
 
-    let categorii = prompt("Ce categorie din tabel, doriti sa fie afisata? Exemplu: brand, model, culoare, marime, material, logo.", "")
-    afisare_categorie(categorii)*/
+    document.body.appendChild(input_nume_header)
+    document.body.appendChild(buton_adauga)
 
-    let input = document.createElement("INPUT")
-    let buton = document.createElement("INPUT")
-    input.setAttribute("type", "text")
-    input.setAttribute("id", "input")
-    buton.setAttribute("type", "button")
-    buton.setAttribute("id", "buton")
-    buton.setAttribute("value", "Confirma")
+    input_nume_header.style.marginLeft = '40%'
+    input_nume_header.style.marginTop = '5%'
+    input_nume_header.style.width = '12%'
+    buton_adauga.style.margin = '1%'
 
-    document.body.appendChild(input)
-    document.body.appendChild(buton)
-
-    input.style.marginLeft = '45%'
-    input.style.marginTop = '5%'
-    buton.style.margin = '1%'
-
-    document.getElementById("buton").addEventListener("click", memorare_nume)
-    document.getElementById("input").addEventListener("keypress", function (event) {
+    buton_adauga.addEventListener("click", afisare_coloana)
+    input_nume_header.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault()
-            document.getElementById("buton").click()
+            document.getElementById("buton_adauga").click()
         }
     })
 
-    let nume_memorat = []
 
-    function memorare_nume() {
-        let nume = document.getElementById("input").value
-        nume_memorat.push(nume)
-    }
+    // functia permite afisarea unei coloane sau a mai multor coloane din tabel care sunt in modul ascuns
+    function afisare_coloana () {
+        let tabel = document.getElementById("tabel")
+        let nume_header = document.getElementById("input_n_h").value
+        let nume_headers = ["brand", "model", "culoare", "marime", "material", "logo text"]
+        for (let i = 0; i < tabel.rows.length; i++) {
+            for (let j = 0; j < nume_headers.length; j++) {
+                if (nume_header === nume_headers[j]) {
+                    tabel.rows[i].cells[j].style.visibility = "visible"
+                }
+            }
+        }
+    }*/
 
-    console.log(nume_memorat)
+
+     let input_nume_header = document.createElement("INPUT")
+     let buton_modifica = document.createElement("INPUT")
+     let input_valoare_celula = document.createElement("INPUT")
+     let buton_adauga = document.createElement("INPUT")
+
+     input_nume_header.setAttribute("type", "text")
+     input_nume_header.setAttribute("id", "input_n_h")
+     input_nume_header.setAttribute("placeholder", "Modificati numele categoriei")
+     input_nume_header.setAttribute("autocomplete", "off")
+     input_valoare_celula.setAttribute("type", "text")
+     input_valoare_celula.setAttribute("id", "input_v_c")
+     input_valoare_celula.setAttribute("placeholder", "Introduceti o valoare")
+     input_valoare_celula.setAttribute("autocomplete", "off")
 
 
+     buton_modifica.setAttribute("type", "button")
+     buton_modifica.setAttribute("id", "buton_modifica")
+     buton_modifica.setAttribute("value", "Modifica")
+     buton_adauga.setAttribute("type", "button")
+     buton_adauga.setAttribute("id", "buton_adauga")
+     buton_adauga.setAttribute("value", "Adauga")
+
+     document.body.appendChild(input_nume_header)
+     document.body.appendChild(buton_modifica)
+
+     input_nume_header.style.marginLeft = '40%'
+     input_nume_header.style.marginTop = '5%'
+     input_nume_header.style.width = '11%'
+     buton_modifica.style.margin = '1%'
+
+     buton_modifica.addEventListener("click", modificare_nume_header)
+     input_nume_header.addEventListener("keypress", function (event) {
+         if (event.key === "Enter") {
+             event.preventDefault()
+             document.getElementById("buton_modifica").click()
+         }
+     })
+
+     buton_adauga.addEventListener("click", adaugare_valoare_celula)
+     input_valoare_celula.addEventListener("keypress", function (event) {
+         if (event.key === "Enter") {
+             event.preventDefault()
+             document.getElementById("buton_adauga").click()
+         }
+     })
+
+     // functia modifica numele initial a noului header
+     function modificare_nume_header() {
+         let tabel = document.getElementById("tabel")
+         tabel.rows[0].cells[6].innerHTML = document.getElementById("input_n_h").value.bold()
+         document.getElementById("input_n_h").style.visibility = "hidden"
+         document.getElementById("buton_modifica").style.visibility = "hidden"
+         document.body.appendChild(input_valoare_celula)
+         document.body.appendChild(buton_adauga)
+         input_valoare_celula.style.marginLeft = '40%'
+         input_valoare_celula.style.marginTop = '1%'
+         input_valoare_celula.style.width = '11%'
+         buton_adauga.style.margin = '1%'
+     }
+
+     // functia adauga o valoare in fiecare celula a noii categorii
+     function adaugare_valoare_celula() {
+         let tabel = document.getElementById("tabel")
+         let valoare_celula = document.getElementById("input_v_c").value
+         tablou_cu_valori_celule.push(valoare_celula)
+         for (let i = 1; i < tabel.rows.length; i++) {
+             tabel.rows[i].cells[6].style.visibility = "visible"
+             tabel.rows[i].cells[6].innerHTML = tablou_cu_valori_celule[i]
+         }
+     }
+
+     let tablou_cu_valori_celule = []
+
+
+     // functia creeaza un tabel
+     function creare_tabel() {
+         let tabel = document.getElementById("tabel")
+         for (let i = 0; i < 5; i++) {
+             let rand = tabel.insertRow(i)
+             rand.insertCell(0).innerHTML = produse[i].brand
+             rand.insertCell(1).innerHTML = produse[i].model
+             rand.insertCell(2).innerHTML = produse[i].culoare
+             rand.insertCell(3).innerHTML = produse[i].marime
+             rand.insertCell(4).innerHTML = produse[i].material
+             rand.insertCell(5).innerHTML = produse[i].logo_text
+             rand.insertCell(6).style.visibility = "hidden"
+         }
+     }
+
+     creare_tabel()
+
+
+    // functia creaza header-ul tabelului si un nou header la alegerea utilizatorului.
     function creare_header(header_nou) {
         let tabel = document.getElementById("tabel")
         let header = tabel.createTHead()
         let rand = header.insertRow()
+        let rand_tabel = tabel.insertRow()
         rand.insertCell(0).innerHTML = "<b>Brand</b>"
         rand.insertCell(1).innerHTML = "<b>Model</b>"
         rand.insertCell(2).innerHTML = "<b>Culoare</b>"
         rand.insertCell(3).innerHTML = "<b>Marime</b>"
         rand.insertCell(4).innerHTML = "<b>Material</b>"
         rand.insertCell(5).innerHTML = "<b>Logo Text</b>"
-        if (header_nou === true) {
-            rand.insertCell(6 ).innerHTML = "<b>Header nou</b>"
-        }
+        if (header_nou === "da") {
+            rand.insertCell(6).innerHTML = "<b>Categorie noua</b>"
+        } else if (header_nou === "nu") {
+            document.getElementById("input_n_h").style.visibility = "hidden"
+            document.getElementById("buton_modifica").style.visibility = "hidden"
+                alert("Nu s-a creat o noua categorie.")
+            }
     }
 
+    // La apelarea unei alte functii principale se comenteaza functia de mai jos creare_header(valoare_introdusa_de_utilizator) impreuna cu let valoare_introdusa_de_utilizator
 
-    //creare_header(header)
-
-    function creare_header_nou(header_nou) {
-        switch (header_nou) {
-            case "da":
-                creare_header(true)
-                alert('Se va crea o noua coloana.')
-                break
-            case "nu":
-                creare_header(false)
-                break
-            default:
-                alert("Valoarea introdusa nu este corecta!")
-        }
-    }
-
-    let header = prompt('Daca doriti sa creati un nou header, tastati "da".', "")
-    creare_header_nou(header)
-
-
-    /*    //Creare elemente
-        let rand = document.createElement("tr")
-        document.body.appendChild(rand)
-        document.getElementById("tabel").appendChild(rand)
-
-        let new_td_0 = document.createElement("td")
-        let new_td_1 = document.createElement("td")
-        let new_td_2 = document.createElement("td")
-        let new_td_3 = document.createElement("td")
-        let new_td_4 = document.createElement("td")
-
-        let text_td_0 = document.createTextNode(produs[0].brand)
-        let text_td_1 = document.createTextNode(produs[0].model)
-        let text_td_2 = document.createTextNode(produs[0].culoare)
-        let text_td_3 = document.createTextNode(produs[0].marime)
-        let text_td_4 = document.createTextNode(produs[0].material)
-
-        new_td_0.appendChild(text_td_0)
-        new_td_1.appendChild(text_td_1)
-        new_td_2.appendChild(text_td_2)
-        new_td_3.appendChild(text_td_3)
-        new_td_4.appendChild(text_td_4)
-
-        let element_td_0 = document.getElementById("randul_1")
-        element_td_0.appendChild(new_td_0)
-
-        let element_td_1 = document.getElementById("randul_1")
-        element_td_1.appendChild(new_td_1)
-
-        let element_td_2 = document.getElementById("randul_1")
-        element_td_2.appendChild(new_td_2)
-
-        let element_td_3 = document.getElementById("randul_1")
-        element_td_3.appendChild(new_td_3)
-
-        let element_td_4 = document.getElementById("randul_1")
-        element_td_4.appendChild(new_td_4)*/
-
-
+    let valoare_introdusa_de_utilizator = prompt('Daca doriti sa creati o noua categorie, tastati "da". Daca nu doriti, tastati "nu."', "")
+    creare_header(valoare_introdusa_de_utilizator)
 
 </script>
 
